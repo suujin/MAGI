@@ -1,0 +1,5 @@
+<LUCAS>
+
+5/10:
+- Table now loads contents of Documents directory, which can be loaded to from iTunes
+- Table supports rearranging and editing (delete does actually delete files)

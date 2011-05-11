@@ -11,4 +11,13 @@
 
 @implementation SelectionUtility
 
++ (NSArray *)filesDirectoryContents {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSFileManager *manager = [[NSFileManager alloc] init];
+    NSArray *files = [manager contentsOfDirectoryAtPath:documentsPath error:nil];
+    [manager release];
+    return files;
+}
+
 @end

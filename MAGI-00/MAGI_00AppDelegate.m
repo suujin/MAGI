@@ -10,6 +10,7 @@
 
 #import "RootViewController.h"
 #import "GeneticSelectionViewController.h"
+#import "GeneticTableViewController.h"
 #import "DetailViewController.h"
 
 @implementation MAGI_00AppDelegate
@@ -31,6 +32,7 @@
     self.window.rootViewController = self.geneticViewController;
     [self.geneticViewController setSearchDelegate:self];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -96,6 +98,7 @@
 - (void)returnFromSearch {
     NSLog(@"Returning from search!");
     self.window.rootViewController = self.geneticViewController;
+    [self.geneticViewController reloadAfterSearch];
 }
 
 @end

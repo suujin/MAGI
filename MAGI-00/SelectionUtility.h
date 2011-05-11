@@ -13,4 +13,6 @@
     
 }
 
++ (NSArray *)filesDirectoryContents;
+
 @end

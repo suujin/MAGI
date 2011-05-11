@@ -10,7 +10,12 @@
 
 
 @interface GeneticTableViewController : UITableViewController {
-    
+    NSMutableArray *docs;
 }
+
+@property (nonatomic, retain) NSArray *docs;
+
+- (void) reloadDirectory;
+- (NSString *)documentAtPath:(NSIndexPath *)indexPath;
 
 @end

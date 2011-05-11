@@ -7,9 +7,13 @@
 //
 
 #import "GeneticTableViewController.h"
-
+#import <MobileCoreServices/UTCoreTypes.h>
+#import <MobileCoreServices/UTType.h>
+#import "SelectionUtility.h"
 
 @implementation GeneticTableViewController
+
+@synthesize docs;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,20 +83,28 @@
 	return YES;
 }
 
+- (void) reloadDirectory {
+    NSArray *files = [SelectionUtility filesDirectoryContents];
+    @synchronized(docs) {
+        if (docs.count != files.count) {
+            self.docs = [[files mutableCopy] autorelease];
+            [self.tableView reloadData];
+        }
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return docs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,62 +116,87 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
-    
+    cell.textLabel.text = [docs objectAtIndex:indexPath.row];
+    NSString *typestr = @"kUTTypeText";
+    NSArray *array = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDocumentTypes"];
+    for (NSDictionary *dict in array) {
+        if ([typestr isEqualToString:[[dict objectForKey:@"LSItemContentTypes"] objectAtIndex:0]])
+            cell.imageView.image = [UIImage imageNamed:[[dict objectForKey:@"CFBundleTypeIconFiles"] objectAtIndex:0]];
+    }
     return cell;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return tableView.editing;
 }
-*/
 
-/*
+- (NSString *)documentAtPath:(NSIndexPath *)indexPath {
+    NSString *name = [docs objectAtIndex:indexPath.row];
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *contents = [NSString stringWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:&error];
+    // TODO: load the file contents correctly for large files
+    if (error != nil) {
+        NSLog(@"Error! Could not load file %@: %@", name, [error localizedDescription]);
+    }
+    return contents;
+}
+
+- (void)deleteDocument:(NSIndexPath *)indexPath {
+    NSString *name = [docs objectAtIndex:indexPath.row];
+    [docs removeObjectAtIndex:indexPath.row];
+    NSFileManager *fileMgr = [[[NSFileManager alloc] init] autorelease];
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    BOOL res = [fileMgr removeItemAtPath:[documentsPath stringByAppendingPathComponent:name] error:&error];
+    if (error != nil || !res) {
+        NSLog(@"Error! Could not remove file: %@", [error localizedDescription]);
+    }
+}
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self deleteDocument:indexPath];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadData];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        // Do nothing
     }   
 }
-*/
 
-/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    int from = fromIndexPath.row;
+    int to = toIndexPath.row;
+    NSString *fromDoc = [docs objectAtIndex:from];
+    [docs removeObjectAtIndex:from];
+    [docs insertObject:fromDoc atIndex:to];
+    [tableView reloadData];
 }
-*/
 
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return tableView.editing;
 }
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    // TODO: nice custom cell that indicates selection
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

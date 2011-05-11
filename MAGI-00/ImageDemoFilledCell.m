@@ -53,7 +53,7 @@
     _title.adjustsFontSizeToFitWidth = YES;
     _title.minimumFontSize = 10.0;
     
-    self.backgroundColor = [UIColor colorWithWhite: 0.95 alpha: 1.0];
+    self.backgroundColor = [UIColor colorWithWhite: 0.98 alpha: 1.0];
     self.contentView.backgroundColor = self.backgroundColor;
     _imageView.backgroundColor = self.backgroundColor;
     _title.backgroundColor = self.backgroundColor;
