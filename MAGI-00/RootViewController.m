@@ -7,12 +7,14 @@
 //
 
 #import "RootViewController.h"
-
 #import "DetailViewController.h"
+#import "Constants.h"
+#import "MAGI_00AppDelegate.h"
 
 @implementation RootViewController
 		
 @synthesize detailViewController;
+@synthesize entries=_entries;
 
 - (void)viewDidLoad
 {
@@ -54,8 +56,7 @@
 		
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
-    		
+    return _entries.count;
 }
 
 		
@@ -69,37 +70,19 @@
     }
 
     // Configure the cell.
-    		
+    cell.textLabel.text = [_entries objectAtIndex:indexPath.row];
     return cell;
 }
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"selected at row: %i", indexPath.row);
     // Navigation logic may go here -- for example, create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -123,12 +106,36 @@
 {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
+    self.detailViewController = nil;
+    self.entries = nil;
 }
 
 - (void)dealloc
 {
     [detailViewController release];
+    [_entries release];
     [super dealloc];
+}
+
+#pragma mark - Other Functions
+
+- (void)updateEntries:(int)type {
+    switch (type) {
+        case kBiomarkers:
+            self.entries = [NSArray arrayWithObjects:@"SNP1", @"SNP2", nil];
+            break;
+        case kRisksPrognoses: case kTreatments:
+            self.entries = [NSArray arrayWithArray:
+                            [[((MAGI_00AppDelegate *)[UIApplication sharedApplication].delegate).diseases allKeys] 
+                             sortedArrayUsingSelector:@selector(compare:)]];
+            break;
+        case kSummary:
+            self.entries = [NSArray arrayWithObjects:@"Risks", @"Treatments", @"By Biomarker", nil];
+            break;
+        default:
+            break;
+    }
+    [self.tableView reloadData];
 }
 
 @end

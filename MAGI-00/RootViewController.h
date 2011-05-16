@@ -11,10 +11,13 @@
 @class DetailViewController;
 
 @interface RootViewController : UITableViewController {
-
+    NSArray *entries;
 }
 
 		
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
+@property (nonatomic, retain) NSArray *entries;
+
+- (void)updateEntries:(int)type;
 
 @end

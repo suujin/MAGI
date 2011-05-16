@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D72588FA13806951000D9E9B /* ChromosomeBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72588F813806951000D9E9B /* ChromosomeBrowserViewController.m */; };
+		D72588FB13806951000D9E9B /* ChromosomeBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D72588F913806951000D9E9B /* ChromosomeBrowserViewController.xib */; };
+		D73D126F13809E9800BAD50D /* diseases in Resources */ = {isa = PBXBuildFile; fileRef = D73D126E13809E9800BAD50D /* diseases */; };
+		D73D127B1380BB1A00BAD50D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D73D127A1380BB1A00BAD50D /* icon.png */; };
 		D74CBF7D1375D80500709F63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D74CBF7C1375D80500709F63 /* UIKit.framework */; };
 		D74CBF7F1375D80500709F63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D74CBF7E1375D80500709F63 /* Foundation.framework */; };
 		D74CBF811375D80500709F63 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D74CBF801375D80500709F63 /* CoreGraphics.framework */; };
@@ -48,6 +52,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D72588F713806951000D9E9B /* ChromosomeBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChromosomeBrowserViewController.h; sourceTree = "<group>"; };
+		D72588F813806951000D9E9B /* ChromosomeBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChromosomeBrowserViewController.m; sourceTree = "<group>"; };
+		D72588F913806951000D9E9B /* ChromosomeBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChromosomeBrowserViewController.xib; sourceTree = "<group>"; };
+		D73D126E13809E9800BAD50D /* diseases */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = diseases; sourceTree = "<group>"; };
+		D73D127A1380BB1A00BAD50D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		D73D127E1380FFF800BAD50D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D74CBF781375D80500709F63 /* MAGI-00.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAGI-00.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74CBF7C1375D80500709F63 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D74CBF7E1375D80500709F63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,7 +140,6 @@
 		D74CBF6D1375D80500709F63 = {
 			isa = PBXGroup;
 			children = (
-				D79B1926137A06F5008B8BC4 /* QuartzCore.framework */,
 				D74CBF821375D80500709F63 /* MAGI-00 */,
 				D74CBF7B1375D80500709F63 /* Frameworks */,
 				D74CBF791375D80500709F63 /* Products */,
@@ -148,6 +157,7 @@
 		D74CBF7B1375D80500709F63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D79B1926137A06F5008B8BC4 /* QuartzCore.framework */,
 				D74CBF7C1375D80500709F63 /* UIKit.framework */,
 				D74CBF7E1375D80500709F63 /* Foundation.framework */,
 				D74CBF801375D80500709F63 /* CoreGraphics.framework */,
@@ -176,6 +186,10 @@
 				D7A228891379810200A9B95A /* GeneticTableViewController.m */,
 				D79B1928137A0840008B8BC4 /* SelectionUtility.h */,
 				D79B1929137A0841008B8BC4 /* SelectionUtility.m */,
+				D72588F713806951000D9E9B /* ChromosomeBrowserViewController.h */,
+				D72588F813806951000D9E9B /* ChromosomeBrowserViewController.m */,
+				D72588F913806951000D9E9B /* ChromosomeBrowserViewController.xib */,
+				D73D127E1380FFF800BAD50D /* Constants.h */,
 			);
 			path = "MAGI-00";
 			sourceTree = "<group>";
@@ -191,6 +205,7 @@
 				D74CBF881375D80500709F63 /* MAGI-00-Prefix.pch */,
 				D74CBF891375D80500709F63 /* main.m */,
 				D79B18ED1379D164008B8BC4 /* InformalUpdateJournal */,
+				D73D126E13809E9800BAD50D /* diseases */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,6 +213,7 @@
 		D7C7EA9513770F7900892510 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D73D127A1380BB1A00BAD50D /* icon.png */,
 				D7C7EA9713770F9B00892510 /* file_icon.png */,
 			);
 			name = Images;
@@ -314,6 +330,9 @@
 				D79B1922137A060E008B8BC4 /* AQGridSelectionGrayBlue.png in Resources */,
 				D79B1923137A060E008B8BC4 /* AQGridSelectionGreen.png in Resources */,
 				D79B1924137A060E008B8BC4 /* AQGridSelectionRed.png in Resources */,
+				D72588FB13806951000D9E9B /* ChromosomeBrowserViewController.xib in Resources */,
+				D73D126F13809E9800BAD50D /* diseases in Resources */,
+				D73D127B1380BB1A00BAD50D /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +361,7 @@
 				D79B1919137A05E2008B8BC4 /* NSIndexSet+AQIsSetContiguous.m in Sources */,
 				D79B191A137A05E2008B8BC4 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */,
 				D79B192A137A0841008B8BC4 /* SelectionUtility.m in Sources */,
+				D72588FA13806951000D9E9B /* ChromosomeBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

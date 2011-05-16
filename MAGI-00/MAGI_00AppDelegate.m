@@ -9,6 +9,7 @@
 #import "MAGI_00AppDelegate.h"
 
 #import "RootViewController.h"
+#import "ChromosomeBrowserViewController.h"
 #import "GeneticSelectionViewController.h"
 #import "GeneticTableViewController.h"
 #import "DetailViewController.h"
@@ -18,17 +19,54 @@
 @synthesize splitViewController = _splitViewController;
 @synthesize rootViewController = _rootViewController;
 @synthesize detailViewController = _detailViewController;
-@synthesize window=_window;
-
+@synthesize window = _window;
+@synthesize diseases = _diseases;
+@synthesize rootNavigationItem = _rootNavigationItem;
 @synthesize geneticViewController=_geneticViewController;
+@synthesize chromosomeViewController=_chromosomeViewController;
+
+- (void)loadDiseases {
+    NSString *diseasesPath = [[NSBundle mainBundle] pathForResource:@"diseases" ofType:nil];
+    NSError *error = nil;
+    NSString *contents = [NSString stringWithContentsOfFile:diseasesPath
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:&error];
+    if (error != nil) {
+        NSLog(@"Error! Could not diseases file %@: %@", diseasesPath, [error localizedDescription]);
+    }
+    NSArray *lines = [contents componentsSeparatedByString:@"\n"];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    for (NSString *line in lines) {
+        NSArray *comps = [line componentsSeparatedByString:@","];
+        NSMutableDictionary *compDict = [[NSMutableDictionary alloc] init];
+        NSString *title = [comps objectAtIndex:0];
+        for (NSString *comp in comps) {
+            NSArray *parts = [comp componentsSeparatedByString:@":"];
+            if (parts.count > 1) [compDict setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]]; 
+        }
+        [dict setObject:compDict forKey:title];
+        [compDict release];
+    }
+    _diseases = [[NSDictionary alloc] initWithDictionary:dict];
+    [dict release];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     // Add the split view controller's view to the window and display.
     if (self.geneticViewController == nil) {
-        self.geneticViewController = [[[GeneticSelectionViewController alloc] initWithNibName:@"GeneticSelectionViewController" bundle:[NSBundle mainBundle]] autorelease];
+        self.geneticViewController = [[[GeneticSelectionViewController alloc] initWithNibName:@"GeneticSelectionViewController" 
+                                                                                       bundle:[NSBundle mainBundle]] autorelease];
     }
+    
+    if (self.chromosomeViewController == nil) {
+        self.chromosomeViewController = [[[ChromosomeBrowserViewController alloc] initWithNibName:@"ChromosomeBrowserViewController" 
+                                                                                           bundle:[NSBundle mainBundle]] autorelease];
+    }
+    
+    [self loadDiseases];
+    
     self.window.rootViewController = self.geneticViewController;
     [self.geneticViewController setSearchDelegate:self];
     [self.window makeKeyAndVisible];
@@ -82,15 +120,24 @@
     [_splitViewController release];
     [_rootViewController release];
     [_detailViewController release];
+    [_diseases release];
+    [_rootNavigationItem release];
     [super dealloc];
 }
 
-#pragma mark - Genetic Selection Search Delegate
+#pragma mark - Genetic Selection Delegate
 
 - (void)performSearchWithParameters:(NSDictionary *)settings {
     NSLog(@"Performing search with parameters: %@", settings);
     self.detailViewController.topLevelDelegate = self;
+    self.detailViewController.rootNavigationItem = self.rootNavigationItem;
+    self.detailViewController.rootViewController = _rootViewController;
+    self.rootViewController.detailViewController = _detailViewController;
     self.window.rootViewController = self.splitViewController;
+}
+
+- (void)presentChromosomeBrowserWithSettings:(NSDictionary *)settings {
+    NSLog(@"Presenting chromosome browser");
 }
 
 #pragma mark - Top Level Delegate

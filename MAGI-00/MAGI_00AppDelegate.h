@@ -7,25 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailViewController.h"
 
-@class GeneticSelectionViewController;
 @class RootViewController;
 @class DetailViewController;
-@protocol GeneticSelectionSearchDelegate;
-@protocol TopLevelDelegate;
+@class GeneticSelectionViewController;
+@class ChromosomeBrowserViewController;
+@protocol GeneticSelectionDelegate;
 
-@interface MAGI_00AppDelegate : NSObject <UIApplicationDelegate, GeneticSelectionSearchDelegate, TopLevelDelegate> {
+@interface MAGI_00AppDelegate : NSObject <UIApplicationDelegate, GeneticSelectionDelegate, TopLevelDelegate> {
     
-    UISplitViewController *_splitViewController;
-    RootViewController *_rootViewController;
-    DetailViewController *_detailViewController;
+    UINavigationItem *_rootNavigationItem;
 }
+
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
-
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) GeneticSelectionViewController *geneticViewController;
+@property (nonatomic, retain) ChromosomeBrowserViewController *chromosomeViewController;
+@property (nonatomic, retain) NSDictionary *diseases;
+@property (nonatomic, retain) IBOutlet UINavigationItem *rootNavigationItem;
 
-@property (nonatomic, retain) IBOutlet GeneticSelectionViewController *geneticViewController;
+
 
 @end

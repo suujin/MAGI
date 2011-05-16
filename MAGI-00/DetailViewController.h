@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class RootViewController;
+
 @protocol TopLevelDelegate
 
 - (void) returnFromSearch;
@@ -25,10 +27,10 @@
 @property (nonatomic, retain) id detailItem;
 @property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
 @property (nonatomic, assign) id<TopLevelDelegate> topLevelDelegate;
+@property (nonatomic, retain) UINavigationItem *rootNavigationItem;
+@property (nonatomic, retain) RootViewController *rootViewController;
 
-- (void) selectGeneticData:(id)sender;
-- (void) selectDatabases:(id)sender;
-- (void) selectSearchOptions:(id)sender;
 - (void) doReturnFromSearch:(id)sender;
+- (void) segmentedControlIndexChanged:(id)sender;
 
 @end

@@ -3,3 +3,7 @@
 5/10:
 - Table now loads contents of Documents directory, which can be loaded to from iTunes
 - Table supports rearranging and editing (delete does actually delete files)
+
+5/15:
+- Made template for chromosome browser
+- Implemented basic design interface for disease selection / chromosome browser

@@ -13,13 +13,24 @@
 #import "ImageDemoFilledCell.h"
 #import "AQGridViewCell.h"
 #import "SelectionUtility.h"
+#import <QuartzCore/CAGradientLayer.h>
+#import "MAGI_00AppDelegate.h"
 
 @implementation GeneticSelectionViewController
 @synthesize tableView;
 @synthesize toolbar;
 @synthesize searchDelegate;
 @synthesize geneticTableViewController;
-@synthesize gridView;
+@synthesize pickerView;
+@synthesize searchButton;
+@synthesize importButton;
+@synthesize diseaseLabel;
+@synthesize chromosomeBrowserTextView;
+@synthesize gradientLayer;
+@synthesize diseasesPickerArray;
+@synthesize chromosomeBrowserButton;
+@synthesize coverImage;
+@synthesize leftSideBackgroundView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +47,16 @@
     self.searchDelegate = nil;
     [tableView release];
     [geneticTableViewController release];
-    [gridView release];
+    [pickerView release];
+    [searchButton release];
+    [importButton release];
+    [diseaseLabel release];
+    [chromosomeBrowserTextView release];
+    [gradientLayer release];
+    [diseasesPickerArray release];
+    [chromosomeBrowserButton release];
+    [coverImage release];
+    [leftSideBackgroundView release];
     [super dealloc];
 }
 
@@ -50,10 +70,29 @@
 
 #pragma mark - View lifecycle
 
+- (void)setupView:(UIInterfaceOrientation) orientation
+{
+    CGFloat longBound = MAX(self.view.bounds.size.width, self.view.bounds.size.height) + 20;
+    gradientLayer.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], 
+                            (id)[[UIColor colorWithRed:12./255 green:66./255 blue:110./255 alpha:1.0] CGColor], nil];
+    if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+        // landscape
+        NSLog(@"portraitizing");
+        gradientLayer.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, longBound, longBound);
+    } else if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+        // portrait
+        NSLog(@"landscaping");
+        gradientLayer.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, longBound, longBound);
+    } 
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do additional setup after loading the view from its nib.
+    self.gradientLayer = [CAGradientLayer layer];
+    [self.view.layer insertSublayer:gradientLayer atIndex:0];
+    
     UIBarButtonItem *adder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                            target:self
                                                                            action:@selector(addSNPFile:)];
@@ -88,15 +127,27 @@
     tableView.delegate = geneticTableViewController;
     [geneticTableViewController reloadDirectory];
     
-    self.gridView.separatorStyle = AQGridViewCellSeparatorStyleSingleLine;
-    self.gridView.resizesCellWidthToFit = YES;
-    self.gridView.separatorColor = [UIColor colorWithWhite: 0.85 alpha: 1.0];
-    gridView.delegate = self;
-    gridView.dataSource = self;
-    [gridView reloadData];
+    self.diseasesPickerArray = [[[((MAGI_00AppDelegate *)[UIApplication sharedApplication].delegate) diseases] allKeys] 
+                                sortedArrayUsingSelector:@selector(compare:)];
+    [chromosomeBrowserButton setBackgroundImage:[UIImage imageNamed:@"file_icon.png"] forState:UIControlStateNormal];
+    chromosomeBrowserButton.layer.cornerRadius = 5.0;
+    chromosomeBrowserButton.layer.masksToBounds = YES;
+    chromosomeBrowserButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    chromosomeBrowserButton.layer.borderWidth = 1.0;
+    coverImage.layer.cornerRadius = 5.0;
+    coverImage.layer.masksToBounds = YES;
+    coverImage.hidden = YES;
+    
+    leftSideBackgroundView.layer.cornerRadius = 5.0;
+    leftSideBackgroundView.layer.masksToBounds = YES;
+    
+    pickerView.layer.cornerRadius = 5.0;
+    pickerView.layer.masksToBounds = YES;
     
     NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:geneticTableViewController selector:@selector(reloadDirectory) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    
+    [self setupView:[[UIApplication sharedApplication] statusBarOrientation]];
 }
 
 - (void)reloadAfterSearch {
@@ -109,7 +160,16 @@
     [self setToolbar:nil];
     [self setTableView:nil];
     [self setGeneticTableViewController:nil];
-    [self setGridView:nil];
+    [self setPickerView:nil];
+    [self setSearchButton:nil];
+    [self setImportButton:nil];
+    [self setDiseaseLabel:nil];
+    [self setChromosomeBrowserTextView:nil];
+    [self setGradientLayer:nil];
+    [self setDiseasesPickerArray:nil];
+    [self setChromosomeBrowserButton:nil];
+    [self setCoverImage:nil];
+    [self setLeftSideBackgroundView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -121,6 +181,7 @@
 - (void)handleInterfaceRotationForOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Handle custom orientation updates here
     NSLog(@"Rotating!");
+    [self setupView:interfaceOrientation];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -157,6 +218,14 @@
     return dict;
 }
 
+- (IBAction)unselectChromosomeBrowser:(id)sender {
+    coverImage.hidden = YES;
+}
+
+- (IBAction)selectChromosomeBrowser:(id)sender {
+    coverImage.hidden = NO;
+}
+
 - (IBAction)performSearch:(id)sender {
     // Perform search here, assuming search parameters and target data set
     NSLog(@"Performing Search");
@@ -170,6 +239,17 @@
 }
 
 - (IBAction)addSNPFile:(id)sender {
+}
+
+- (IBAction)warnOnImport:(id)sender {
+    UIAlertView *warning = [[UIAlertView alloc] initWithTitle:@"Import File"
+                                                      message:@"Unfortunately, the only way currently available to import files is to copy them over through iTunes. Plug in your iPad, go to Apps in the iPad management bar, select MAGI, and drag the files in from your computer."
+                                                     delegate:self
+                                            cancelButtonTitle:@"OK" 
+                                            otherButtonTitles:nil];
+                                                  
+    [warning show];
+    [warning release];
 }
 
 - (void)toggleEdit:(id)sender {
@@ -187,47 +267,27 @@
 }
 
 #pragma mark -
-#pragma mark Grid View Data Source
+#pragma mark Picker View Methods
 
-- (NSUInteger) numberOfItemsInGridView: (AQGridView *) aGridView
-{
-    // TODO: FIX THIS
-    return [SelectionUtility filesDirectoryContents].count;
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+	return 1;
 }
 
-- (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
-{
-    AQGridViewCell * cell = nil;
-    NSString *filledCellIdentifier = @"FilledCellIdentifier";
-    
-    ImageDemoFilledCell * filledCell = (ImageDemoFilledCell *)[aGridView dequeueReusableCellWithIdentifier:filledCellIdentifier];
-    if ( filledCell == nil )
-    {
-        filledCell = [[[ImageDemoFilledCell alloc] initWithFrame: CGRectMake(20.0, 0.0, 100.0, 100.0)
-                                                 reuseIdentifier:filledCellIdentifier] autorelease];
-        filledCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
-    }
-    
-    NSString *typestr = @"kUTTypeText";
-    NSArray *array = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDocumentTypes"];
-    for (NSDictionary *dict in array) {
-        if ([typestr isEqualToString:[[dict objectForKey:@"LSItemContentTypes"] objectAtIndex:0]])
-            filledCell.image = [UIImage imageNamed:[[dict objectForKey:@"CFBundleTypeIconFiles"] objectAtIndex:0]];
-    }
-    filledCell.title = [[SelectionUtility filesDirectoryContents] objectAtIndex:index];
-    
-    cell = filledCell;  
-    return ( cell );
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+	return [diseasesPickerArray count];
 }
 
-- (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
-{
-    return ( CGSizeMake(120.0, 120.0) );
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    coverImage.hidden = YES;
+	return [diseasesPickerArray objectAtIndex:row];
 }
 
-#pragma mark -
-#pragma mark Grid View Delegate
-
-// nothing here yet
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    coverImage.hidden = YES;
+	NSString *obj = [diseasesPickerArray objectAtIndex:row];
+	NSLog(@"Selected Disease: %@. Corresponding object: %@", obj, 
+          [[((MAGI_00AppDelegate *)[UIApplication sharedApplication].delegate) diseases] objectForKey:obj]);
+}
 
 @end

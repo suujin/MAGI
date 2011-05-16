@@ -7,8 +7,8 @@
 //
 
 #import "DetailViewController.h"
-
 #import "RootViewController.h"
+#import "Constants.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -22,6 +22,8 @@
 @synthesize detailDescriptionLabel=_detailDescriptionLabel;
 @synthesize popoverController=_myPopoverController;
 @synthesize topLevelDelegate=_topLevelDelegate;
+@synthesize rootNavigationItem=_rootNavigationItem;
+@synthesize rootViewController=_rootViewController;
 
 #pragma mark - Managing the detail item
 
@@ -100,30 +102,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                              target:self
-                                                                              action:@selector(doReturnFromSearch:)];
-    UIBarButtonItem *flexItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                              target:nil   
-                                                                              action:nil];
-    UIBarButtonItem *geneItem = [[UIBarButtonItem alloc] initWithTitle:@"Genetic Data" 
-                                                                 style:UIBarButtonItemStyleBordered 
-                                                                target:self 
-                                                                action:@selector(selectGeneticData:)];
-    UIBarButtonItem *dbItem = [[UIBarButtonItem alloc] initWithTitle:@"Databases"
-                                                               style:UIBarButtonItemStyleBordered 
-                                                              target:self 
-                                                              action:@selector(selectDatabases:)];
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithTitle:@"Search Options"
-                                                                   style:UIBarButtonItemStyleBordered 
-                                                                  target:self 
-                                                                  action:@selector(selectSearchOptions:)];
+    UIBarButtonItem *doneItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                               target:self
+                                                                               action:@selector(doReturnFromSearch:)] autorelease];
+    UIBarButtonItem *flexItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                               target:nil   
+                                                                               action:nil] autorelease];
+    UISegmentedControl *menuControl = [[[UISegmentedControl alloc] initWithItems:
+                                        [NSArray arrayWithObjects:ksBiomarkers, ksRisksPrognoses, ksTreatments, ksSummary, nil]] autorelease];
+    menuControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    menuControl.selectedSegmentIndex = 0;
+    [menuControl addTarget:self action:@selector(segmentedControlIndexChanged:) forControlEvents:UIControlEventValueChanged];
+    UIBarButtonItem *controlItem = [[[UIBarButtonItem alloc] initWithCustomView:menuControl] autorelease];
+    self.rootNavigationItem.title = ksBiomarkers;
+    [self.rootViewController updateEntries:0];
     NSMutableArray *items = [[self.toolbar items] mutableCopy];
     [items insertObject:doneItem atIndex:0];
     [items insertObject:flexItem atIndex:0];
-    [items insertObject:searchItem atIndex:0];
-    [items insertObject:dbItem atIndex:0];
-    [items insertObject:geneItem atIndex:0];
+    [items insertObject:controlItem atIndex:0];
     [self.toolbar setItems:items animated:NO];
     [items release];
 }
@@ -135,6 +131,11 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 	self.popoverController = nil;
+    self.toolbar = nil;
+    self.detailItem = nil;
+    self.detailDescriptionLabel = nil;
+    self.rootNavigationItem = nil;
+    self.rootViewController = nil;
 }
 
 #pragma mark - Memory management
@@ -154,26 +155,40 @@
     [_detailItem release];
     [_detailDescriptionLabel release];
     _topLevelDelegate = nil;
+    [_rootNavigationItem release];
+    [_rootViewController release];
     [super dealloc];
 }
 
-#pragma mark - Bar Button Item Methods
-
-- (void) selectGeneticData:(id)sender {
-    NSLog(@"selecting genetic");
-}
-
-- (void) selectDatabases:(id)sender {
-    NSLog(@"selecting databases");
-}
-
-- (void) selectSearchOptions:(id)sender {
-    NSLog(@"selecting search options");
-}
+#pragma mark - Menu Item Methods
 
 - (void) doReturnFromSearch:(id)sender {
     NSLog(@"Returning from search");
     if (_topLevelDelegate) [_topLevelDelegate returnFromSearch];
+}
+
+- (void) segmentedControlIndexChanged:(id)sender {
+    switch (((UISegmentedControl *)sender).selectedSegmentIndex) {
+        case kBiomarkers:
+            NSLog(@"biomarkers");
+            self.rootNavigationItem.title = ksBiomarkers;
+            break;
+        case kRisksPrognoses:
+            NSLog(@"prognoses");
+            self.rootNavigationItem.title = ksRisksPrognoses;
+            break;
+        case kTreatments:
+            NSLog(@"treatments");
+            self.rootNavigationItem.title = ksTreatments;
+            break;
+        case kSummary:
+            NSLog(@"summary");
+            self.rootNavigationItem.title = ksSummary;
+            break;
+        default:
+            break;
+    }
+    [self.rootViewController updateEntries:((UISegmentedControl *)sender).selectedSegmentIndex];
 }
                                      
                                      

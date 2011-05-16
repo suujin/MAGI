@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AQGridView.h"
 
-
-@interface ChromosomeBrowserViewController : UIViewController {
+@interface ChromosomeBrowserViewController : UIViewController <AQGridViewDelegate, AQGridViewDataSource> {
     
+    UINavigationBar *navigationBar;
+    AQGridView *gridView;
 }
+@property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
+@property (nonatomic, retain) IBOutlet AQGridView *gridView;
 
 @end
