@@ -13,6 +13,7 @@
 @class RootViewController;
 @class DetailViewController;
 @class GeneticTableViewController;
+@class DiseaseTableViewController;
 
 @protocol GeneticSelectionDelegate <NSObject>
 
@@ -21,42 +22,49 @@
 
 @end
 
-@interface GeneticSelectionViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
+@interface GeneticSelectionViewController : UIViewController {
     UIToolbar *toolbar;
     id<GeneticSelectionDelegate> searchDelegate;
     UITableView *tableView;
+    UITableView *diseaseTableView;
     GeneticTableViewController *geneticTableViewController;
-    UIPickerView *pickerView;
+    DiseaseTableViewController *diseaseTableViewController;
     UIButton *searchButton;
     UIButton *importButton;
     UILabel *diseaseLabel;
     UITextView *chromosomeBrowserTextView;
     CAGradientLayer *gradientLayer;
-    NSArray *diseasesPickerArray;
     UIButton *chromosomeBrowserButton;
     UIImageView *coverImage;
-    UIView *leftSideBackgroundView;
+    UIImageView *backgroundImageView;
+    UIView *verticalDivider;
+    UIView *horizontalDivider;
+    UILabel *geneticLabel;
+    UILabel *orLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableView *diseaseTableView;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, assign) id<GeneticSelectionDelegate> searchDelegate;
 @property (nonatomic, retain) GeneticTableViewController *geneticTableViewController;
-@property (nonatomic, retain) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, retain) DiseaseTableViewController *diseaseTableViewController;
 @property (nonatomic, retain) IBOutlet UIButton *searchButton;
 @property (nonatomic, retain) IBOutlet UIButton *importButton;
 @property (nonatomic, retain) IBOutlet UILabel *diseaseLabel;
 @property (nonatomic, retain) IBOutlet UITextView *chromosomeBrowserTextView;
 @property (nonatomic, retain) CAGradientLayer *gradientLayer;
-@property (nonatomic, retain) NSArray *diseasesPickerArray;
 @property (nonatomic, retain) IBOutlet UIButton *chromosomeBrowserButton;
 @property (nonatomic, retain) IBOutlet UIImageView *coverImage;
-@property (nonatomic, retain) IBOutlet UIView *leftSideBackgroundView;
+@property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, retain) IBOutlet UIView *verticalDivider;
+@property (nonatomic, retain) IBOutlet UIView *horizontalDivider;
+@property (nonatomic, retain) IBOutlet UILabel *geneticLabel;
+@property (nonatomic, retain) IBOutlet UILabel *orLabel;
 
 - (IBAction)unselectChromosomeBrowser:(id)sender;
 - (IBAction)selectChromosomeBrowser:(id)sender;
 - (IBAction)performSearch:(id)sender;
-- (IBAction)addSNPFile:(id)sender;
 - (IBAction)warnOnImport:(id)sender;
 - (void)toggleEdit:(id)sender;
 - (void)showInfo:(id)sender;

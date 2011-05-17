@@ -21,6 +21,10 @@
 		D74CBF931375D80600709F63 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D74CBF921375D80600709F63 /* DetailViewController.m */; };
 		D74CBF961375D80600709F63 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D74CBF941375D80600709F63 /* DetailView.xib */; };
 		D74CBF991375D80600709F63 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D74CBF981375D80600709F63 /* RootViewController.m */; };
+		D773EFB9138244A200B63BE4 /* helices.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFB8138244A200B63BE4 /* helices.png */; };
+		D773EFBC1382463100B63BE4 /* helicesVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFBB1382463100B63BE4 /* helicesVertical.png */; };
+		D773EFBF13825A3D00B63BE4 /* DiseaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D773EFBE13825A3D00B63BE4 /* DiseaseTableViewController.m */; };
+		D773EFC21383029C00B63BE4 /* DDFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D773EFC11383029C00B63BE4 /* DDFileReader.m */; };
 		D79B18EE1379D164008B8BC4 /* InformalUpdateJournal in Resources */ = {isa = PBXBuildFile; fileRef = D79B18ED1379D164008B8BC4 /* InformalUpdateJournal */; };
 		D79B18F9137A04E9008B8BC4 /* ImageDemoFilledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B18F8137A04E9008B8BC4 /* ImageDemoFilledCell.m */; };
 		D79B1911137A05E2008B8BC4 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B18FD137A05E2008B8BC4 /* AQGridView.m */; };
@@ -74,6 +78,12 @@
 		D74CBF951375D80600709F63 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
 		D74CBF971375D80600709F63 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D74CBF981375D80600709F63 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D773EFB8138244A200B63BE4 /* helices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helices.png; sourceTree = "<group>"; };
+		D773EFBB1382463100B63BE4 /* helicesVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helicesVertical.png; sourceTree = "<group>"; };
+		D773EFBD13825A3D00B63BE4 /* DiseaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiseaseTableViewController.h; sourceTree = "<group>"; };
+		D773EFBE13825A3D00B63BE4 /* DiseaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseTableViewController.m; sourceTree = "<group>"; };
+		D773EFC01383029C00B63BE4 /* DDFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileReader.h; sourceTree = "<group>"; };
+		D773EFC11383029C00B63BE4 /* DDFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileReader.m; sourceTree = "<group>"; };
 		D79B18ED1379D164008B8BC4 /* InformalUpdateJournal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InformalUpdateJournal; sourceTree = "<group>"; };
 		D79B18F7137A04E8008B8BC4 /* ImageDemoFilledCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDemoFilledCell.h; sourceTree = "<group>"; };
 		D79B18F8137A04E9008B8BC4 /* ImageDemoFilledCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDemoFilledCell.m; sourceTree = "<group>"; };
@@ -190,6 +200,10 @@
 				D72588F813806951000D9E9B /* ChromosomeBrowserViewController.m */,
 				D72588F913806951000D9E9B /* ChromosomeBrowserViewController.xib */,
 				D73D127E1380FFF800BAD50D /* Constants.h */,
+				D773EFBD13825A3D00B63BE4 /* DiseaseTableViewController.h */,
+				D773EFBE13825A3D00B63BE4 /* DiseaseTableViewController.m */,
+				D773EFC01383029C00B63BE4 /* DDFileReader.h */,
+				D773EFC11383029C00B63BE4 /* DDFileReader.m */,
 			);
 			path = "MAGI-00";
 			sourceTree = "<group>";
@@ -215,6 +229,8 @@
 			children = (
 				D73D127A1380BB1A00BAD50D /* icon.png */,
 				D7C7EA9713770F9B00892510 /* file_icon.png */,
+				D773EFB8138244A200B63BE4 /* helices.png */,
+				D773EFBB1382463100B63BE4 /* helicesVertical.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -333,6 +349,8 @@
 				D72588FB13806951000D9E9B /* ChromosomeBrowserViewController.xib in Resources */,
 				D73D126F13809E9800BAD50D /* diseases in Resources */,
 				D73D127B1380BB1A00BAD50D /* icon.png in Resources */,
+				D773EFB9138244A200B63BE4 /* helices.png in Resources */,
+				D773EFBC1382463100B63BE4 /* helicesVertical.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +380,8 @@
 				D79B191A137A05E2008B8BC4 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */,
 				D79B192A137A0841008B8BC4 /* SelectionUtility.m in Sources */,
 				D72588FA13806951000D9E9B /* ChromosomeBrowserViewController.m in Sources */,
+				D773EFBF13825A3D00B63BE4 /* DiseaseTableViewController.m in Sources */,
+				D773EFC21383029C00B63BE4 /* DDFileReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

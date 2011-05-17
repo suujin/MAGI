@@ -7,3 +7,7 @@
 5/15:
 - Made template for chromosome browser
 - Implemented basic design interface for disease selection / chromosome browser
+
+5/17:
+- Finished implementing basic interface; ready to add functionality
+- Included class for reading large files line by line (not yet incorporated)

@@ -10,6 +10,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <MobileCoreServices/UTType.h>
 #import "SelectionUtility.h"
+#import "DDFileReader.h"
 
 @implementation GeneticTableViewController
 
@@ -116,6 +117,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [docs objectAtIndex:indexPath.row];
     NSString *typestr = @"kUTTypeText";
     NSArray *array = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDocumentTypes"];
@@ -132,18 +134,29 @@
     return tableView.editing;
 }
 
-- (NSString *)documentAtPath:(NSIndexPath *)indexPath {
+int count = 0;
+
+- (NSArray *)linesOfDocumentAtPath:(NSIndexPath *)indexPath {
     NSString *name = [docs objectAtIndex:indexPath.row];
-    NSError *error = nil;
+    // NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *contents = [NSString stringWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]
+    /* 
+     NSString *contents = [NSString stringWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]
                                                    encoding:NSUTF8StringEncoding
-                                                      error:&error];
-    // TODO: load the file contents correctly for large files
-    if (error != nil) {
-        NSLog(@"Error! Could not load file %@: %@", name, [error localizedDescription]);
-    }
+                                                      error:&error]; 
+     if (error != nil) {
+     NSLog(@"Error! Could not load file %@: %@", name, [error localizedDescription]);
+     }
+    */
+    
+    NSMutableArray *contents = [[NSMutableArray alloc] init];
+    DDFileReader * reader = [[DDFileReader alloc] initWithFilePath:[documentsPath stringByAppendingPathComponent:name]];
+    [reader enumerateLinesUsingBlock:^(NSString * line, BOOL * stop) {
+        [contents addObject:line];
+        if (count++ % 10000 == 0) NSLog(@"iter %i", count-1);
+    }];
+    [reader release];
     return contents;
 }
 

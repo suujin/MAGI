@@ -10,7 +10,11 @@
 
 
 @interface DiseaseTableViewController : UITableViewController {
-    
+    NSArray *diseases;
+    UIImageView *coverImage;
 }
+
+@property (nonatomic, retain) NSArray *diseases;
+@property (nonatomic, retain) UIImageView *coverImage;
 
 @end

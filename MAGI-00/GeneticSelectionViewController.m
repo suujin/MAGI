@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "DetailViewController.h"
 #import "GeneticTableViewController.h"
+#import "DiseaseTableViewController.h"
 #import "ImageDemoFilledCell.h"
 #import "AQGridViewCell.h"
 #import "SelectionUtility.h"
@@ -18,19 +19,23 @@
 
 @implementation GeneticSelectionViewController
 @synthesize tableView;
+@synthesize diseaseTableView;
 @synthesize toolbar;
 @synthesize searchDelegate;
 @synthesize geneticTableViewController;
-@synthesize pickerView;
+@synthesize diseaseTableViewController;
 @synthesize searchButton;
 @synthesize importButton;
 @synthesize diseaseLabel;
 @synthesize chromosomeBrowserTextView;
 @synthesize gradientLayer;
-@synthesize diseasesPickerArray;
 @synthesize chromosomeBrowserButton;
 @synthesize coverImage;
-@synthesize leftSideBackgroundView;
+@synthesize backgroundImageView;
+@synthesize verticalDivider;
+@synthesize horizontalDivider;
+@synthesize geneticLabel;
+@synthesize orLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,16 +52,19 @@
     self.searchDelegate = nil;
     [tableView release];
     [geneticTableViewController release];
-    [pickerView release];
     [searchButton release];
     [importButton release];
     [diseaseLabel release];
     [chromosomeBrowserTextView release];
     [gradientLayer release];
-    [diseasesPickerArray release];
     [chromosomeBrowserButton release];
     [coverImage release];
-    [leftSideBackgroundView release];
+    [backgroundImageView release];
+    [verticalDivider release];
+    [horizontalDivider release];
+    [diseaseTableView release];
+    [geneticLabel release];
+    [orLabel release];
     [super dealloc];
 }
 
@@ -73,17 +81,47 @@
 - (void)setupView:(UIInterfaceOrientation) orientation
 {
     CGFloat longBound = MAX(self.view.bounds.size.width, self.view.bounds.size.height) + 20;
-    gradientLayer.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], 
-                            (id)[[UIColor colorWithRed:12./255 green:66./255 blue:110./255 alpha:1.0] CGColor], nil];
+    gradientLayer.colors = [NSArray arrayWithObjects:(id)[[UIColor brownColor] CGColor], [[UIColor brownColor] CGColor], nil]; 
+                            //(id)[[UIColor colorWithRed:12./255 green:66./255 blue:110./255 alpha:1.0] CGColor], nil];
+    // must adjust:
+    // tableView, searchButton, importButton, diseaseLabel, chromosomeBrowserTextView, chromosomeBrowserButton,
+    // coverImage, backgroundImageView, verticalDivider, horizontalDivider, diseaseTableView, geneticLabel, orLabel
     if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-        // landscape
+        // portrait
         NSLog(@"portraitizing");
         gradientLayer.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, longBound, longBound);
+        /* CGRect tvFrame = tableView.frame;
+        [tableView setFrame:CGRectMake(tvFrame.origin.x, tvFrame.origin.y, 275, 845)];
+        [diseaseLabel setFrame:CGRectMake(610., 135., 287., 29.)];
+        [diseaseTableView setFrame:CGRectMake(610., 145., 287., 224.)];
+        [orLabel setFrame:CGRectMake(610., 345., 287., 49.)];
+        [chromosomeBrowserTextView setFrame:CGRectMake(520., 400., 467., 37.)];
+        [chromosomeBrowserButton setFrame:CGRectMake(645., 450., 216., 216.)];
+        [coverImage setFrame:chromosomeBrowserButton.frame];*/
+        // backgroundImageView.frame = CGRectMake(0., 0., 768., 1024.);
+        backgroundImageView.image = [UIImage imageNamed:@"helicesVertical.png"];
+        [backgroundImageView setAlpha:.6];
+        // CGRect vdFrame = verticalDivider.frame;
+        //[verticalDivider setFrame:CGRectMake(310, vdFrame.origin.y, vdFrame.size.width, vdFrame.size.height)];
     } else if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
-        // portrait
+        // landscape
         NSLog(@"landscaping");
         gradientLayer.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, longBound, longBound);
-    } 
+        /* CGRect tvFrame = tableView.frame;
+        [tableView setFrame:CGRectMake(tvFrame.origin.x, tvFrame.origin.y, 330, 589)];
+        [diseaseLabel setFrame:CGRectMake(375., 70., 287., 29.)];
+        [diseaseTableView setFrame:CGRectMake(365., 115., 287., 224.)];
+        [orLabel setFrame:CGRectMake(365., 410., 287., 49.)];
+        [chromosomeBrowserTextView setFrame:CGRectMake(245., 465., 467., 37.)];
+        [chromosomeBrowserButton setFrame:CGRectMake(400., 580., 216., 216.)];
+        coverImage.frame = chromosomeBrowserButton.frame;*/
+        // backgroundImageView.frame = CGRectMake(0., 0., 1024., 768.);
+        backgroundImageView.image = [UIImage imageNamed:@"helices.png"];
+        [backgroundImageView setAlpha:.6];
+        // CGRect vdFrame = verticalDivider.frame;
+        //[verticalDivider setFrame:CGRectMake(365, vdFrame.origin.y, vdFrame.size.width, vdFrame.size.height)];
+    }
+    [tableView setNeedsDisplay];
 }
 
 - (void)viewDidLoad
@@ -93,9 +131,9 @@
     self.gradientLayer = [CAGradientLayer layer];
     [self.view.layer insertSublayer:gradientLayer atIndex:0];
     
-    UIBarButtonItem *adder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                           target:self
-                                                                           action:@selector(addSNPFile:)];
+    backgroundImageView.image = [UIImage imageNamed:@"helices.png"];
+    [backgroundImageView setAlpha:.8];
+    
     UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                           target:nil 
                                                                           action:nil];
@@ -120,15 +158,23 @@
                                                              style:UIBarButtonItemStyleBordered 
                                                             target:self 
                                                             action:@selector(showInfo:)];
-    [self.toolbar setItems:[[NSArray alloc] initWithObjects:adder, flex, title, flex2, edit, info, nil]];
+    [self.toolbar setItems:[[NSArray alloc] initWithObjects:edit, flex, title, flex2, info, nil]];
+    
     geneticTableViewController = [[GeneticTableViewController alloc] init];
     geneticTableViewController.view = self.tableView;
     tableView.dataSource = geneticTableViewController;
     tableView.delegate = geneticTableViewController;
     [geneticTableViewController reloadDirectory];
     
-    self.diseasesPickerArray = [[[((MAGI_00AppDelegate *)[UIApplication sharedApplication].delegate) diseases] allKeys] 
-                                sortedArrayUsingSelector:@selector(compare:)];
+    diseaseTableViewController = [[DiseaseTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    diseaseTableViewController.view = self.diseaseTableView;
+    diseaseTableView.dataSource = diseaseTableViewController;
+    diseaseTableView.delegate = diseaseTableViewController;
+    diseaseTableViewController.coverImage = self.coverImage;
+    
+    diseaseTableView.layer.cornerRadius = 5.0;
+    diseaseTableView.layer.masksToBounds = YES;
+    
     [chromosomeBrowserButton setBackgroundImage:[UIImage imageNamed:@"file_icon.png"] forState:UIControlStateNormal];
     chromosomeBrowserButton.layer.cornerRadius = 5.0;
     chromosomeBrowserButton.layer.masksToBounds = YES;
@@ -137,12 +183,6 @@
     coverImage.layer.cornerRadius = 5.0;
     coverImage.layer.masksToBounds = YES;
     coverImage.hidden = YES;
-    
-    leftSideBackgroundView.layer.cornerRadius = 5.0;
-    leftSideBackgroundView.layer.masksToBounds = YES;
-    
-    pickerView.layer.cornerRadius = 5.0;
-    pickerView.layer.masksToBounds = YES;
     
     NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:geneticTableViewController selector:@selector(reloadDirectory) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
@@ -160,16 +200,19 @@
     [self setToolbar:nil];
     [self setTableView:nil];
     [self setGeneticTableViewController:nil];
-    [self setPickerView:nil];
     [self setSearchButton:nil];
     [self setImportButton:nil];
     [self setDiseaseLabel:nil];
     [self setChromosomeBrowserTextView:nil];
     [self setGradientLayer:nil];
-    [self setDiseasesPickerArray:nil];
     [self setChromosomeBrowserButton:nil];
     [self setCoverImage:nil];
-    [self setLeftSideBackgroundView:nil];
+    [self setBackgroundImageView:nil];
+    [self setVerticalDivider:nil];
+    [self setHorizontalDivider:nil];
+    [self setDiseaseTableView:nil];
+    [self setGeneticLabel:nil];
+    [self setOrLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -229,17 +272,14 @@
 - (IBAction)performSearch:(id)sender {
     // Perform search here, assuming search parameters and target data set
     NSLog(@"Performing Search");
-    NSString *fileContents = [((GeneticTableViewController *)tableView.delegate) documentAtPath:[tableView indexPathForSelectedRow]];
-    NSLog(@"File is done reading!");
-    NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-    NSLog(@"We have the lines");
+    // TODO: make a popup with a progress view, and do the file reading in the background
+    NSArray *lines = [((GeneticTableViewController *)tableView.delegate) linesOfDocumentAtPath:[tableView indexPathForSelectedRow]];
+    NSLog(@"File is done reading! We have the lines.");
     NSDictionary *dict = [self geneticInfo:lines];
     NSLog(@"Finished dictionary formation");
     [self.searchDelegate performSearchWithParameters:dict];
 }
 
-- (IBAction)addSNPFile:(id)sender {
-}
 
 - (IBAction)warnOnImport:(id)sender {
     UIAlertView *warning = [[UIAlertView alloc] initWithTitle:@"Import File"
@@ -266,28 +306,5 @@
     [info release];
 }
 
-#pragma mark -
-#pragma mark Picker View Methods
-
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
-	return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-	return [diseasesPickerArray count];
-}
-
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    coverImage.hidden = YES;
-	return [diseasesPickerArray objectAtIndex:row];
-}
-
-- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    coverImage.hidden = YES;
-	NSString *obj = [diseasesPickerArray objectAtIndex:row];
-	NSLog(@"Selected Disease: %@. Corresponding object: %@", obj, 
-          [[((MAGI_00AppDelegate *)[UIApplication sharedApplication].delegate) diseases] objectForKey:obj]);
-}
 
 @end

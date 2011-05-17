@@ -128,7 +128,7 @@
 #pragma mark - Genetic Selection Delegate
 
 - (void)performSearchWithParameters:(NSDictionary *)settings {
-    NSLog(@"Performing search with parameters: %@", settings);
+    NSLog(@"Performing search");
     self.detailViewController.topLevelDelegate = self;
     self.detailViewController.rootNavigationItem = self.rootNavigationItem;
     self.detailViewController.rootViewController = _rootViewController;

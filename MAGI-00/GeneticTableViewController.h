@@ -16,6 +16,6 @@
 @property (nonatomic, retain) NSArray *docs;
 
 - (void) reloadDirectory;
-- (NSString *)documentAtPath:(NSIndexPath *)indexPath;
+- (NSArray *)linesOfDocumentAtPath:(NSIndexPath *)indexPath;
 
 @end
