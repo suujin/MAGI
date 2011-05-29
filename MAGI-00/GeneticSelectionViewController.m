@@ -16,6 +16,8 @@
 #import "SelectionUtility.h"
 #import <QuartzCore/CAGradientLayer.h>
 #import "MAGI_00AppDelegate.h"
+#import "ChromosomeBrowserViewController.h"
+#import "Constants.h"
 
 @implementation GeneticSelectionViewController
 @synthesize tableView;
@@ -191,6 +193,8 @@
 }
 
 - (void)reloadAfterSearch {
+    NSLog(@"coming back");
+    [coverImage setHidden:YES];
     [geneticTableViewController reloadDirectory];
 }
 
@@ -273,11 +277,44 @@
     // Perform search here, assuming search parameters and target data set
     NSLog(@"Performing Search");
     // TODO: make a popup with a progress view, and do the file reading in the background
-    NSArray *lines = [((GeneticTableViewController *)tableView.delegate) linesOfDocumentAtPath:[tableView indexPathForSelectedRow]];
-    NSLog(@"File is done reading! We have the lines.");
-    NSDictionary *dict = [self geneticInfo:lines];
-    NSLog(@"Finished dictionary formation");
-    [self.searchDelegate performSearchWithParameters:dict];
+    if ([tableView indexPathForSelectedRow] == nil) {
+        UIAlertView *warning = [[UIAlertView alloc] initWithTitle:@"No file selected"
+                                                          message:@"Please select a file to analyze."
+                                                         delegate:self
+                                                cancelButtonTitle:@"OK" 
+                                                otherButtonTitles:nil];
+        
+        [warning show];
+        [warning release];
+        return;
+    } else if ([diseaseTableView indexPathForSelectedRow] == nil && [coverImage isHidden]) {
+        UIAlertView *warning = [[UIAlertView alloc] initWithTitle:@"No disease selected"
+                                                          message:@"Please select a disease to analyze."
+                                                         delegate:self
+                                                cancelButtonTitle:@"OK" 
+                                                otherButtonTitles:nil];
+        
+        [warning show];
+        [warning release];
+        return;
+    }
+    if (![coverImage isHidden]) {
+        NSLog(@"loading stuff");
+        [self.searchDelegate presentChromosomeBrowserWithSettings:nil];/*[[[NSDictionary alloc] 
+                                                                    initWithObjects:[NSArray arrayWithObjects:kDiseaseSetting, kFileNameSetting, nil]
+                                                                    forKeys:[NSArray arrayWithObjects:
+                                                                             [diseaseTableViewController.diseases objectAtIndex:[diseaseTableView indexPathForSelectedRow].row],
+                                                                             [geneticTableViewController.docs objectAtIndex:[tableView indexPathForSelectedRow].row], nil] 
+                                                                    count:2] autorelease]];*/
+    } else {
+        NSArray *lines = [((GeneticTableViewController *)tableView.delegate) linesOfDocumentAtPath:[tableView indexPathForSelectedRow]];
+        NSLog(@"File is done reading! We have the lines.");
+        NSDictionary *dict = [self geneticInfo:lines];
+        NSLog(@"Finished dictionary formation");
+        [self.searchDelegate performSearchWithDisease:[diseaseTableViewController.diseases 
+                                                       objectAtIndex:[diseaseTableView indexPathForSelectedRow].row]
+                                             withSNPs:dict];
+    }
 }
 
 

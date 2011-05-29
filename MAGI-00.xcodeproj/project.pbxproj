@@ -25,6 +25,31 @@
 		D773EFBC1382463100B63BE4 /* helicesVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFBB1382463100B63BE4 /* helicesVertical.png */; };
 		D773EFBF13825A3D00B63BE4 /* DiseaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D773EFBE13825A3D00B63BE4 /* DiseaseTableViewController.m */; };
 		D773EFC21383029C00B63BE4 /* DDFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D773EFC11383029C00B63BE4 /* DDFileReader.m */; };
+		D773EFDC1386001B00B63BE4 /* chr1.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFC41386001B00B63BE4 /* chr1.png */; };
+		D773EFDD1386001B00B63BE4 /* chr10.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFC51386001B00B63BE4 /* chr10.png */; };
+		D773EFDE1386001B00B63BE4 /* chr11.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFC61386001B00B63BE4 /* chr11.png */; };
+		D773EFDF1386001B00B63BE4 /* chr12.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFC71386001B00B63BE4 /* chr12.png */; };
+		D773EFE01386001B00B63BE4 /* chr13.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFC81386001B00B63BE4 /* chr13.png */; };
+		D773EFE11386001B00B63BE4 /* chr14.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFC91386001B00B63BE4 /* chr14.png */; };
+		D773EFE21386001B00B63BE4 /* chr15.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFCA1386001B00B63BE4 /* chr15.png */; };
+		D773EFE31386001B00B63BE4 /* chr16.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFCB1386001B00B63BE4 /* chr16.png */; };
+		D773EFE41386001B00B63BE4 /* chr17.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFCC1386001B00B63BE4 /* chr17.png */; };
+		D773EFE51386001B00B63BE4 /* chr18.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFCD1386001B00B63BE4 /* chr18.png */; };
+		D773EFE61386001B00B63BE4 /* chr19.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFCE1386001B00B63BE4 /* chr19.png */; };
+		D773EFE71386001B00B63BE4 /* chr2.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFCF1386001B00B63BE4 /* chr2.png */; };
+		D773EFE81386001B00B63BE4 /* chr20.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD01386001B00B63BE4 /* chr20.png */; };
+		D773EFE91386001B00B63BE4 /* chr21.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD11386001B00B63BE4 /* chr21.png */; };
+		D773EFEA1386001B00B63BE4 /* chr22.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD21386001B00B63BE4 /* chr22.png */; };
+		D773EFEB1386001B00B63BE4 /* chr3.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD31386001B00B63BE4 /* chr3.png */; };
+		D773EFEC1386001B00B63BE4 /* chr4.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD41386001B00B63BE4 /* chr4.png */; };
+		D773EFED1386001B00B63BE4 /* chr5.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD51386001B00B63BE4 /* chr5.png */; };
+		D773EFEE1386001B00B63BE4 /* chr6.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD61386001B00B63BE4 /* chr6.png */; };
+		D773EFEF1386001B00B63BE4 /* chr7.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD71386001B00B63BE4 /* chr7.png */; };
+		D773EFF01386001B00B63BE4 /* chr8.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD81386001B00B63BE4 /* chr8.png */; };
+		D773EFF11386001B00B63BE4 /* chr9.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFD91386001B00B63BE4 /* chr9.png */; };
+		D773EFF21386001B00B63BE4 /* chrX.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFDA1386001B00B63BE4 /* chrX.png */; };
+		D773EFF31386001B00B63BE4 /* chrY.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFDB1386001B00B63BE4 /* chrY.png */; };
+		D773EFF51386628300B63BE4 /* whiteImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D773EFF41386628100B63BE4 /* whiteImage.png */; };
 		D79B18EE1379D164008B8BC4 /* InformalUpdateJournal in Resources */ = {isa = PBXBuildFile; fileRef = D79B18ED1379D164008B8BC4 /* InformalUpdateJournal */; };
 		D79B18F9137A04E9008B8BC4 /* ImageDemoFilledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B18F8137A04E9008B8BC4 /* ImageDemoFilledCell.m */; };
 		D79B1911137A05E2008B8BC4 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D79B18FD137A05E2008B8BC4 /* AQGridView.m */; };
@@ -53,6 +78,20 @@
 		D7C7EACD1377180500892510 /* AQGridSelectionRed.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C7EAC81377180500892510 /* AQGridSelectionRed.png */; };
 		D7C7EAD3137718D900892510 /* GeneticSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C7EAD1137718D900892510 /* GeneticSelectionViewController.m */; };
 		D7C7EAD4137718D900892510 /* GeneticSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C7EAD2137718D900892510 /* GeneticSelectionViewController.xib */; };
+		D7E91E6E13918240003587E7 /* rsidToGene in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E6D13918240003587E7 /* rsidToGene */; };
+		D7E91E7113918250003587E7 /* rsidAlleleToMutation in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E7013918250003587E7 /* rsidAlleleToMutation */; };
+		D7E91E821391AE49003587E7 /* akt1.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E7B1391AE49003587E7 /* akt1.txt */; };
+		D7E91E831391AE49003587E7 /* akt1_nsclc_E17K.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E7C1391AE49003587E7 /* akt1_nsclc_E17K.txt */; };
+		D7E91E841391AE49003587E7 /* nsclc.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E7D1391AE49003587E7 /* nsclc.txt */; };
+		D7E91E861391AE49003587E7 /* akt1_nsclc.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E7F1391AE49003587E7 /* akt1_nsclc.txt */; };
+		D7E91E871391AE49003587E7 /* mapk-pk13.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E801391AE49003587E7 /* mapk-pk13.png */; };
+		D7E91E881391AE49003587E7 /* nsclc-molecular-subsets.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E811391AE49003587E7 /* nsclc-molecular-subsets.png */; };
+		D7E91E8A1391C0C6003587E7 /* akt1-nsclc-e17k.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E91E891391C0C6003587E7 /* akt1-nsclc-e17k.png */; };
+		D7E91EAF1392C8DA003587E7 /* License.html in Resources */ = {isa = PBXBuildFile; fileRef = D7E91EA41392C8DA003587E7 /* License.html */; };
+		D7E91EB01392C8DA003587E7 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D7E91EA51392C8DA003587E7 /* License.rtf */; };
+		D7E91EB11392C8DA003587E7 /* RegexKitLite.html in Resources */ = {isa = PBXBuildFile; fileRef = D7E91EA71392C8DA003587E7 /* RegexKitLite.html */; };
+		D7E91EB21392C8DA003587E7 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E91EA81392C8DA003587E7 /* RegexKitLite.m */; };
+		D7E91EB41392CDBF003587E7 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E91EB31392CDBE003587E7 /* libicucore.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +123,31 @@
 		D773EFBE13825A3D00B63BE4 /* DiseaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiseaseTableViewController.m; sourceTree = "<group>"; };
 		D773EFC01383029C00B63BE4 /* DDFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileReader.h; sourceTree = "<group>"; };
 		D773EFC11383029C00B63BE4 /* DDFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileReader.m; sourceTree = "<group>"; };
+		D773EFC41386001B00B63BE4 /* chr1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr1.png; sourceTree = "<group>"; };
+		D773EFC51386001B00B63BE4 /* chr10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr10.png; sourceTree = "<group>"; };
+		D773EFC61386001B00B63BE4 /* chr11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr11.png; sourceTree = "<group>"; };
+		D773EFC71386001B00B63BE4 /* chr12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr12.png; sourceTree = "<group>"; };
+		D773EFC81386001B00B63BE4 /* chr13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr13.png; sourceTree = "<group>"; };
+		D773EFC91386001B00B63BE4 /* chr14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr14.png; sourceTree = "<group>"; };
+		D773EFCA1386001B00B63BE4 /* chr15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr15.png; sourceTree = "<group>"; };
+		D773EFCB1386001B00B63BE4 /* chr16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr16.png; sourceTree = "<group>"; };
+		D773EFCC1386001B00B63BE4 /* chr17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr17.png; sourceTree = "<group>"; };
+		D773EFCD1386001B00B63BE4 /* chr18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr18.png; sourceTree = "<group>"; };
+		D773EFCE1386001B00B63BE4 /* chr19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr19.png; sourceTree = "<group>"; };
+		D773EFCF1386001B00B63BE4 /* chr2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr2.png; sourceTree = "<group>"; };
+		D773EFD01386001B00B63BE4 /* chr20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr20.png; sourceTree = "<group>"; };
+		D773EFD11386001B00B63BE4 /* chr21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr21.png; sourceTree = "<group>"; };
+		D773EFD21386001B00B63BE4 /* chr22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr22.png; sourceTree = "<group>"; };
+		D773EFD31386001B00B63BE4 /* chr3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr3.png; sourceTree = "<group>"; };
+		D773EFD41386001B00B63BE4 /* chr4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr4.png; sourceTree = "<group>"; };
+		D773EFD51386001B00B63BE4 /* chr5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr5.png; sourceTree = "<group>"; };
+		D773EFD61386001B00B63BE4 /* chr6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr6.png; sourceTree = "<group>"; };
+		D773EFD71386001B00B63BE4 /* chr7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr7.png; sourceTree = "<group>"; };
+		D773EFD81386001B00B63BE4 /* chr8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr8.png; sourceTree = "<group>"; };
+		D773EFD91386001B00B63BE4 /* chr9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chr9.png; sourceTree = "<group>"; };
+		D773EFDA1386001B00B63BE4 /* chrX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrX.png; sourceTree = "<group>"; };
+		D773EFDB1386001B00B63BE4 /* chrY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrY.png; sourceTree = "<group>"; };
+		D773EFF41386628100B63BE4 /* whiteImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteImage.png; sourceTree = "<group>"; };
 		D79B18ED1379D164008B8BC4 /* InformalUpdateJournal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InformalUpdateJournal; sourceTree = "<group>"; };
 		D79B18F7137A04E8008B8BC4 /* ImageDemoFilledCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDemoFilledCell.h; sourceTree = "<group>"; };
 		D79B18F8137A04E9008B8BC4 /* ImageDemoFilledCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDemoFilledCell.m; sourceTree = "<group>"; };
@@ -130,6 +194,21 @@
 		D7C7EAD0137718D900892510 /* GeneticSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneticSelectionViewController.h; sourceTree = "<group>"; };
 		D7C7EAD1137718D900892510 /* GeneticSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneticSelectionViewController.m; sourceTree = "<group>"; };
 		D7C7EAD2137718D900892510 /* GeneticSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneticSelectionViewController.xib; sourceTree = "<group>"; };
+		D7E91E6D13918240003587E7 /* rsidToGene */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsidToGene; sourceTree = "<group>"; };
+		D7E91E7013918250003587E7 /* rsidAlleleToMutation */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rsidAlleleToMutation; sourceTree = "<group>"; };
+		D7E91E7B1391AE49003587E7 /* akt1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = akt1.txt; sourceTree = "<group>"; };
+		D7E91E7C1391AE49003587E7 /* akt1_nsclc_E17K.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = akt1_nsclc_E17K.txt; sourceTree = "<group>"; };
+		D7E91E7D1391AE49003587E7 /* nsclc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nsclc.txt; sourceTree = "<group>"; };
+		D7E91E7F1391AE49003587E7 /* akt1_nsclc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = akt1_nsclc.txt; sourceTree = "<group>"; };
+		D7E91E801391AE49003587E7 /* mapk-pk13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapk-pk13.png"; sourceTree = "<group>"; };
+		D7E91E811391AE49003587E7 /* nsclc-molecular-subsets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nsclc-molecular-subsets.png"; sourceTree = "<group>"; };
+		D7E91E891391C0C6003587E7 /* akt1-nsclc-e17k.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "akt1-nsclc-e17k.png"; sourceTree = "<group>"; };
+		D7E91EA41392C8DA003587E7 /* License.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = License.html; sourceTree = "<group>"; };
+		D7E91EA51392C8DA003587E7 /* License.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
+		D7E91EA61392C8DA003587E7 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		D7E91EA71392C8DA003587E7 /* RegexKitLite.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RegexKitLite.html; sourceTree = "<group>"; };
+		D7E91EA81392C8DA003587E7 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		D7E91EB31392CDBE003587E7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7E91EB41392CDBF003587E7 /* libicucore.dylib in Frameworks */,
 				D79B1927137A06F5008B8BC4 /* QuartzCore.framework in Frameworks */,
 				D74CBF7D1375D80500709F63 /* UIKit.framework in Frameworks */,
 				D74CBF7F1375D80500709F63 /* Foundation.framework in Frameworks */,
@@ -150,6 +230,7 @@
 		D74CBF6D1375D80500709F63 = {
 			isa = PBXGroup;
 			children = (
+				D7E91EB31392CDBE003587E7 /* libicucore.dylib */,
 				D74CBF821375D80500709F63 /* MAGI-00 */,
 				D74CBF7B1375D80500709F63 /* Frameworks */,
 				D74CBF791375D80500709F63 /* Products */,
@@ -211,6 +292,8 @@
 		D74CBF831375D80500709F63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7E91E9B1392C8D8003587E7 /* RegexKitLite-4.0 */,
+				D7E91E7A1391AE34003587E7 /* Bio */,
 				D7C7EAC3137717EE00892510 /* Resources */,
 				D7C7EAA1137717B300892510 /* GridView */,
 				D7C7EA9513770F7900892510 /* Images */,
@@ -220,13 +303,48 @@
 				D74CBF891375D80500709F63 /* main.m */,
 				D79B18ED1379D164008B8BC4 /* InformalUpdateJournal */,
 				D73D126E13809E9800BAD50D /* diseases */,
+				D7E91E6D13918240003587E7 /* rsidToGene */,
+				D7E91E7013918250003587E7 /* rsidAlleleToMutation */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D773EFC31386001B00B63BE4 /* chromosomes */ = {
+			isa = PBXGroup;
+			children = (
+				D773EFC41386001B00B63BE4 /* chr1.png */,
+				D773EFC51386001B00B63BE4 /* chr10.png */,
+				D773EFC61386001B00B63BE4 /* chr11.png */,
+				D773EFC71386001B00B63BE4 /* chr12.png */,
+				D773EFC81386001B00B63BE4 /* chr13.png */,
+				D773EFC91386001B00B63BE4 /* chr14.png */,
+				D773EFCA1386001B00B63BE4 /* chr15.png */,
+				D773EFCB1386001B00B63BE4 /* chr16.png */,
+				D773EFCC1386001B00B63BE4 /* chr17.png */,
+				D773EFCD1386001B00B63BE4 /* chr18.png */,
+				D773EFCE1386001B00B63BE4 /* chr19.png */,
+				D773EFCF1386001B00B63BE4 /* chr2.png */,
+				D773EFD01386001B00B63BE4 /* chr20.png */,
+				D773EFD11386001B00B63BE4 /* chr21.png */,
+				D773EFD21386001B00B63BE4 /* chr22.png */,
+				D773EFD31386001B00B63BE4 /* chr3.png */,
+				D773EFD41386001B00B63BE4 /* chr4.png */,
+				D773EFD51386001B00B63BE4 /* chr5.png */,
+				D773EFD61386001B00B63BE4 /* chr6.png */,
+				D773EFD71386001B00B63BE4 /* chr7.png */,
+				D773EFD81386001B00B63BE4 /* chr8.png */,
+				D773EFD91386001B00B63BE4 /* chr9.png */,
+				D773EFDA1386001B00B63BE4 /* chrX.png */,
+				D773EFDB1386001B00B63BE4 /* chrY.png */,
+				D773EFF41386628100B63BE4 /* whiteImage.png */,
+			);
+			path = chromosomes;
 			sourceTree = "<group>";
 		};
 		D7C7EA9513770F7900892510 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D773EFC31386001B00B63BE4 /* chromosomes */,
 				D73D127A1380BB1A00BAD50D /* icon.png */,
 				D7C7EA9713770F9B00892510 /* file_icon.png */,
 				D773EFB8138244A200B63BE4 /* helices.png */,
@@ -281,6 +399,32 @@
 				D7C7EAC81377180500892510 /* AQGridSelectionRed.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		D7E91E7A1391AE34003587E7 /* Bio */ = {
+			isa = PBXGroup;
+			children = (
+				D7E91E7B1391AE49003587E7 /* akt1.txt */,
+				D7E91E7C1391AE49003587E7 /* akt1_nsclc_E17K.txt */,
+				D7E91E7D1391AE49003587E7 /* nsclc.txt */,
+				D7E91E7F1391AE49003587E7 /* akt1_nsclc.txt */,
+				D7E91E891391C0C6003587E7 /* akt1-nsclc-e17k.png */,
+				D7E91E801391AE49003587E7 /* mapk-pk13.png */,
+				D7E91E811391AE49003587E7 /* nsclc-molecular-subsets.png */,
+			);
+			name = Bio;
+			sourceTree = "<group>";
+		};
+		D7E91E9B1392C8D8003587E7 /* RegexKitLite-4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				D7E91EA41392C8DA003587E7 /* License.html */,
+				D7E91EA51392C8DA003587E7 /* License.rtf */,
+				D7E91EA61392C8DA003587E7 /* RegexKitLite.h */,
+				D7E91EA71392C8DA003587E7 /* RegexKitLite.html */,
+				D7E91EA81392C8DA003587E7 /* RegexKitLite.m */,
+			);
+			path = "RegexKitLite-4.0";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +495,43 @@
 				D73D127B1380BB1A00BAD50D /* icon.png in Resources */,
 				D773EFB9138244A200B63BE4 /* helices.png in Resources */,
 				D773EFBC1382463100B63BE4 /* helicesVertical.png in Resources */,
+				D773EFDC1386001B00B63BE4 /* chr1.png in Resources */,
+				D773EFDD1386001B00B63BE4 /* chr10.png in Resources */,
+				D773EFDE1386001B00B63BE4 /* chr11.png in Resources */,
+				D773EFDF1386001B00B63BE4 /* chr12.png in Resources */,
+				D773EFE01386001B00B63BE4 /* chr13.png in Resources */,
+				D773EFE11386001B00B63BE4 /* chr14.png in Resources */,
+				D773EFE21386001B00B63BE4 /* chr15.png in Resources */,
+				D773EFE31386001B00B63BE4 /* chr16.png in Resources */,
+				D773EFE41386001B00B63BE4 /* chr17.png in Resources */,
+				D773EFE51386001B00B63BE4 /* chr18.png in Resources */,
+				D773EFE61386001B00B63BE4 /* chr19.png in Resources */,
+				D773EFE71386001B00B63BE4 /* chr2.png in Resources */,
+				D773EFE81386001B00B63BE4 /* chr20.png in Resources */,
+				D773EFE91386001B00B63BE4 /* chr21.png in Resources */,
+				D773EFEA1386001B00B63BE4 /* chr22.png in Resources */,
+				D773EFEB1386001B00B63BE4 /* chr3.png in Resources */,
+				D773EFEC1386001B00B63BE4 /* chr4.png in Resources */,
+				D773EFED1386001B00B63BE4 /* chr5.png in Resources */,
+				D773EFEE1386001B00B63BE4 /* chr6.png in Resources */,
+				D773EFEF1386001B00B63BE4 /* chr7.png in Resources */,
+				D773EFF01386001B00B63BE4 /* chr8.png in Resources */,
+				D773EFF11386001B00B63BE4 /* chr9.png in Resources */,
+				D773EFF21386001B00B63BE4 /* chrX.png in Resources */,
+				D773EFF31386001B00B63BE4 /* chrY.png in Resources */,
+				D773EFF51386628300B63BE4 /* whiteImage.png in Resources */,
+				D7E91E6E13918240003587E7 /* rsidToGene in Resources */,
+				D7E91E7113918250003587E7 /* rsidAlleleToMutation in Resources */,
+				D7E91E821391AE49003587E7 /* akt1.txt in Resources */,
+				D7E91E831391AE49003587E7 /* akt1_nsclc_E17K.txt in Resources */,
+				D7E91E841391AE49003587E7 /* nsclc.txt in Resources */,
+				D7E91E861391AE49003587E7 /* akt1_nsclc.txt in Resources */,
+				D7E91E871391AE49003587E7 /* mapk-pk13.png in Resources */,
+				D7E91E881391AE49003587E7 /* nsclc-molecular-subsets.png in Resources */,
+				D7E91E8A1391C0C6003587E7 /* akt1-nsclc-e17k.png in Resources */,
+				D7E91EAF1392C8DA003587E7 /* License.html in Resources */,
+				D7E91EB01392C8DA003587E7 /* License.rtf in Resources */,
+				D7E91EB11392C8DA003587E7 /* RegexKitLite.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +563,7 @@
 				D72588FA13806951000D9E9B /* ChromosomeBrowserViewController.m in Sources */,
 				D773EFBF13825A3D00B63BE4 /* DiseaseTableViewController.m in Sources */,
 				D773EFC21383029C00B63BE4 /* DDFileReader.m in Sources */,
+				D7E91EB21392C8DA003587E7 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

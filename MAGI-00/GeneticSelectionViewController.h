@@ -17,8 +17,9 @@
 
 @protocol GeneticSelectionDelegate <NSObject>
 
-- (void)performSearchWithParameters:(NSDictionary *)settings;
+- (void)performSearchWithDisease:(NSString *)disease withSNPs:(NSDictionary *)snps;
 - (void)presentChromosomeBrowserWithSettings:(NSDictionary *)settings;
+- (void)returnFromChromosomeBrowser;
 
 @end
 

@@ -1,0 +1,7 @@
+#SUMMARY
+##TITLE 
+AKT1 Mutations in Non-Small Cell Lung Cancer (NSCLC)
+##TEXT
+Somatic mutations in AKT1 have been found in ~ 1% of all NSCLC ([http://www.ncbi.nlm.nih.gov/pubmed/18504432 Bleeker, 2008]; [http://www.ncbi.nlm.nih.gov/pubmed/18611285 Do, 2008]; [http://www.ncbi.nlm.nih.gov/pubmed/18256540 Malanga, 2008]), in both adenocarcinoma and squamous cell carcinoma histology. Specific clinical characteristics of lung cancer patients harboring AKT1 mutations have yet to be described.
+##AUTHOR 
+Christine Lovly, M.D., Ph.D., Leora Horn, M.D., M.S.c., William Pao, M.D., Ph.D.

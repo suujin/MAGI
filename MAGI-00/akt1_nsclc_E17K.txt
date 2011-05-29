@@ -1,0 +1,26 @@
+#SUMMARY
+##TITLE
+AKT1 c.49G>A (E17K) Mutations in Non-Small Cell Lung Cancer (NSCLC)
+##TABLE
+{|
+|+AKT1 E17K mutation
+|-
+|Location of mutation || Pleckstrin homology domain (exon 4)
+|-
+|Frequency of mutation 	~1% of NSCLC
+|-
+|Response to erlotinib/gefitinib (EGFR TKIs) || Unknown at present*
+|-
+|Response to cetuximab/panitumumab (anti-EGFR antibodies) || Unknown at present*
+|}
+##TEXT
+The E17K mutation results in an amino acid change at position 17 in AKT1, from a glutamic acid (E) to a lysine (K). This mutation occurs within the pleckstrin homology domain (PHD) of AKT1 (Fig. 2) and results in activation of the phosphatidylinositol 3-kinase (PI3K) pathway. In vitro studies suggest that the AKT1 E17K mutation is less sensitive than wild-type AKT1 to inhibition by the experimental AKT inhibitor, VIII; a non-ATP competitive agent which requires a functional pleckstrin homology domain ([http://www.ncbi.nlm.nih.gov/pubmed/17611497 Carpten, 2007]). Other AKT inhibitors are in development.
+
+* The role of AKT1 mutations for selecting/prioritizing anti-cancer treatment is uncertain at this time. However, it should be noted that AKT1 mutations are usually found in tumors wildtype for EGFR, ALK, and other driver mutations.
+#IMAGE
+##FILE
+akt1-nsclc-e17k.png
+##TITLE
+Figure 2: Schematic of AKT1 E17K mutation.
+##TEXT
+Functional domains of AKT1 are depicted. PHD: pleckstrin homology domain. RD: regulatory domain.

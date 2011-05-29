@@ -11,3 +11,27 @@
 5/17:
 - Finished implementing basic interface; ready to add functionality
 - Included class for reading large files line by line (not yet incorporated)
+
+5/19:
+- Very basic chromosome browser interface included
+
+5/28:
+- Detail view appearance done
+- Detail view summary text
+- Detail view image parsing
+
+5/29:
+- Changed images to basic scroll view
+- References and gene links done
+- Summary text scrubbed of program-oriented annotations
+
+NEEDS TO BE DONE:
+- change chr browser interface on main screen
+- test with real files
+- limit results by chromosome for chr browser
+- progress bar for reading in files
+
+WE WISH:
+- plug in mechanism for actually showing indicators and their severity (hh)
+- make utility for large file reading, or for paring down large files we can't read? (h)
+- get 24 nicer chromosome pictures (m)

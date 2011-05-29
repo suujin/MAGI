@@ -1,0 +1,16 @@
+#SUMMARY
+##TITLE 
+Molecular Profiling of Lung Cancer
+##TEXT
+Lung cancer is the leading cause of cancer related mortality in the United States, with an estimated 222,520 new cases and 157,300 deaths anticipated in 2010 ([http://www.ncbi.nlm.nih.gov/pubmed/20610543 Jemal, 2010]). Classically, treatment decisions have been empiric and based upon histology of the tumor. Platinum based chemotherapy remains the cornerstone of treatment. However, survival rates remain low. Novel therapies and treatment strategies are needed.
+
+Lung cancer is comprised of two main histologic subtypes: non-small cell lung cancer (NSCLC) and small cell lung cancer (SCLC). Over the past decade, it has become evident that subsets of NSCLC can be further defined at the molecular level by recurrent 'driver' mutations that occur in multiple oncogenes, including EGFR, KRAS, [[gene:BRAF]], NRAS, PIK3CA, MEK1, [[gene:AKT1]], HER2, and ALK (Fig. 1). Such 'driver' mutations lead to constitutive activation of mutant signaling proteins that induce and sustain tumorigenesis. These mutations are rarely found concurrently in the same tumor. Mutations can be found in all NSCLC histologies (including adenocarcinoma, squamous cell carcinoma, and large cell carcinoma) and in current, former, and never smokers (defined by individuals who smoked less than 100 cigarettes in a lifetime). Never smokers with adenocarcinoma have the highest incidence of EGFR, HER2, and ALK mutations. Importantly, targeted small molecule inhibitors are currently available or being developed for specific molecularly defined subsets of lung cancer patients.
+
+The following text is meant to provide a broad overview of several of the oncogenes known to be important for lung cancer pathogenesis. Where possible, the presence of a specific mutation is correlated to clinical parameters as well as response to both conventional chemotherapy and targeted agents. At present, only data for treatment of advanced (stage IIIB/IV) disease is presented.
+#IMAGE
+##FILE 
+nsclc-molecular-subsets.png
+##TITLE 
+Figure 1. Molecular subsets of NSCLC.
+#GENES
+AKT1:E17K

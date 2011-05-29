@@ -1,0 +1,12 @@
+#SUMMARY
+##TITLE 
+What is AKT1?
+##TEXT
+AKT1 belongs to a family of serine-threonine protein kinases which also includes AKT2 and AKT3. AKT1 plays a key role in multiple cell processes, including growth, proliferation, survival, and angiogenesis. AKT1 acts as a downstream mediator of phosphatidylinositol 3-kinase (PI3K) (Fig. 1).
+#IMAGE
+##FILE 
+mapk-pk13.png
+##TITLE 
+Figure 1. Schematic of the MAPK and PI3K pathways.
+##TEXT 
+Growth factor binding to receptor tyrosine kinase results in activation of the MAPK signaling pathway (RAS-RAF-MEK-ERK) and the PI3K pathway (PI3K-AKT-mTOR). The letter "K" within the schema denotes the tyrosine kinase domain.

@@ -15,6 +15,14 @@
 		
 @synthesize detailViewController;
 @synthesize entries=_entries;
+@synthesize rsidToGene=_rsidToGene;
+@synthesize rsidAlleleToMutation=_rsidAlleleToMutation;
+@synthesize snpDictionary=_snpDictionary;
+@synthesize diseaseCode=_diseaseCode;
+@synthesize snps=_snps;
+@synthesize mutations=_mutations;
+@synthesize genes=_genes;
+@synthesize geneDictionary=_geneDictionary;
 
 - (void)viewDidLoad
 {
@@ -83,15 +91,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected at row: %i", indexPath.row);
-    // Navigation logic may go here -- for example, create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     NSManagedObject *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    [detailViewController loadAllForDisease:_diseaseCode
+                                    andGene:[_genes objectAtIndex:indexPath.row] 
+                                     andSNP:[_snps objectAtIndex:indexPath.row] 
+                                andMutation:[_mutations objectAtIndex:indexPath.row]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,19 +111,35 @@
     // For example: self.myOutlet = nil;
     self.detailViewController = nil;
     self.entries = nil;
+    self.rsidAlleleToMutation = nil;
+    self.rsidToGene = nil;
+    self.snpDictionary = nil;
+    self.snps = nil;
+    self.mutations = nil;
+    self.diseaseCode = nil;
+    self.genes = nil;
+    self.geneDictionary = nil;
 }
 
 - (void)dealloc
 {
     [detailViewController release];
     [_entries release];
+    [_rsidToGene release];
+    [_rsidAlleleToMutation release];
+    [_snpDictionary release];
+    [_snps release];
+    [_mutations release];
+    [_diseaseCode release];
+    [_genes release];
+    [_geneDictionary release];
     [super dealloc];
 }
 
 #pragma mark - Other Functions
 
 - (void)updateEntries:(int)type {
-    switch (type) {
+   /* switch (type) {
         case kBiomarkers:
             self.entries = [NSArray arrayWithObjects:@"SNP1", @"SNP2", nil];
             break;
@@ -134,8 +153,70 @@
             break;
         default:
             break;
-    }
+    }*/
     [self.tableView reloadData];
+    if ([self.tableView indexPathForSelectedRow] == nil) 
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
+}
+
+- (void)performSearchAndDisplayResults {
+    // for each SNP and allele, see if it has results in rsidToGene and rsidAlleleToMutation
+    // put results in entries
+    NSMutableArray *ent = [[NSMutableArray alloc] init];
+    NSMutableArray *gen = [[NSMutableArray alloc] init];
+    NSMutableArray *snp = [[NSMutableArray alloc] init];
+    NSMutableArray *mut = [[NSMutableArray alloc] init];
+    NSMutableDictionary *gendict = [[NSMutableDictionary alloc] init];
+    [ent addObject:@"Summary"];
+    [gen addObject:@""];
+    [snp addObject:@""];
+    [mut addObject:@""];
+    NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"intValue" ascending:YES];
+    for (NSString *snpString in [[_snpDictionary allKeys] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]]) {
+        NSDictionary *entry = [_snpDictionary objectForKey:snpString];
+        NSArray *genes = [_rsidToGene objectForKey:snpString];
+        if (genes == nil) continue;
+        for (NSString *gene in genes) {
+            if ([gendict objectForKey:gene] == nil) {
+                [ent addObject:gene];
+                [gen addObject:gene];
+                [snp addObject:@""];
+                [mut addObject:@""];
+                [gendict addEntriesFromDictionary:[NSDictionary dictionaryWithObject:@"" forKey:gene]];
+            }
+            NSString *alleleString = [(NSArray *)[entry objectForKey:@"alleles"] objectAtIndex:0];
+            NSMutableArray *alleles = [[alleleString componentsSeparatedByString:@"/"] mutableCopy];
+            if ([[alleles objectAtIndex:0] isEqualToString:[alleles objectAtIndex:1]]) {
+                [alleles removeLastObject];
+            }
+            for (NSString *allele in alleles) {
+                NSString *combined = [snpString stringByAppendingString:allele];
+                NSArray *res = [_rsidAlleleToMutation objectForKey:combined];
+                if (res == nil) continue;
+                for (NSString *mutation in res) {
+                    [ent addObject:[gene stringByAppendingFormat:@": %@, %@ (%@)", snpString, mutation, alleleString]];
+                    [gen addObject:gene];
+                    [snp addObject:snpString];
+                    [mut addObject:mutation];
+                }
+            }
+            [alleles release];
+        }
+    }
+    [sorter release];
+    NSLog(@"entries %@\ngenes %@\nsnp %@\nmut %@", ent, gen, snp, mut);
+    self.entries = ent;
+    self.genes = gen;
+    self.snps = snp;
+    self.mutations = mut;
+    self.geneDictionary = gendict;
+    [ent release];
+    [gen release];
+    [snp release];
+    [mut release];
+    [gendict release];
+    [self updateEntries:0];
 }
 
 @end

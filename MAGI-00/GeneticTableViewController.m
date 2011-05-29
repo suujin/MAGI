@@ -138,18 +138,8 @@ int count = 0;
 
 - (NSArray *)linesOfDocumentAtPath:(NSIndexPath *)indexPath {
     NSString *name = [docs objectAtIndex:indexPath.row];
-    // NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0];
-    /* 
-     NSString *contents = [NSString stringWithContentsOfFile:[documentsPath stringByAppendingPathComponent:name]
-                                                   encoding:NSUTF8StringEncoding
-                                                      error:&error]; 
-     if (error != nil) {
-     NSLog(@"Error! Could not load file %@: %@", name, [error localizedDescription]);
-     }
-    */
-    
     NSMutableArray *contents = [[NSMutableArray alloc] init];
     DDFileReader * reader = [[DDFileReader alloc] initWithFilePath:[documentsPath stringByAppendingPathComponent:name]];
     [reader enumerateLinesUsingBlock:^(NSString * line, BOOL * stop) {
