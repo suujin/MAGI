@@ -515,6 +515,34 @@
     else [self.referencesTableView setUserInteractionEnabled:NO];
     [_referencesTableView reloadData];
 }
+
+- (void)drillToGene:(NSString *)gene {
+    // Just handles the button.
+    NSMutableArray *items = [[self.toolbar items] mutableCopy];
+    [items removeLastObject];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" 
+                                                                      style:UIBarButtonItemStyleBordered 
+                                                                     target:self 
+                                                                     action:@selector(backToTopLevel)];
+    [items addObject:barButtonItem];
+    [self.toolbar setItems:items animated:YES];
+    [items release];
+    self.rootNavigationItem.title = gene;
+}
+
+- (void)backToTopLevel {
+    // Handles the button in the toolbar and calls the root view controller.
+    NSMutableArray *items = [[self.toolbar items] mutableCopy];
+    [items removeLastObject];
+    UIBarButtonItem *doneItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                               target:self
+                                                                               action:@selector(doReturnFromSearch:)] autorelease];
+    [items addObject:doneItem];
+    [self.toolbar setItems:items animated:YES];
+    [items release];
+    self.rootNavigationItem.title = ksBiomarkers;
+    [self.rootViewController backToTopLevel];
+}
                                      
                                      
 @end

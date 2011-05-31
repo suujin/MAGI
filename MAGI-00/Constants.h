@@ -11,7 +11,7 @@
 #define kRisksPrognoses 1
 #define kTreatments 2
 #define kSummary 3
-#define ksBiomarkers @"Biomarkers"
+#define ksBiomarkers @"Overview" // TODO rename this
 #define ksRisksPrognoses @"Risks/Prognoses"
 #define ksTreatments @"Treatments"
 #define ksSummary @"Summary"

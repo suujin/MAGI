@@ -50,5 +50,7 @@
 - (void) loadAllForDisease:(NSString *)disease andGene:(NSString *)gene andSNP:(NSString *)snp andMutation:(NSString *)mutation;
 - (void) setupScrollView;
 - (void) layoutScrollImages;
+- (void) drillToGene:(NSString *)gene;
+- (void) backToTopLevel;
 
 @end
